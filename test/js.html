@@ -3,8 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <title>javascript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      width:200px;
+      height: 200px;
+      border-radius: 50%;
+      background: lightskyblue;
+    }
+  </style>
 </head>
 <body>
+<h3>原型链</h3>
+<script>
+  // function Father() {
+  //   this.text = '1'
+  //   var ball = document.createElement('a');
+  //   ball.innerHTML = 'new'
+  //   document.body.appendChild(ball)
+  // }
+  // Father.prototype.someFn = function() {
+  //   console.log(1)
+  // }
+  // Father.prototype.someValue = '2'
+  //
+  // function Son() {
+  //   this.text1 = 'text1'
+  // }
+  // Son.prototype = new Father()
 
+
+  function Father(...arr) {
+    this.some = '父类属性'
+    this.params = arr;
+  }
+  Father.prototype.someFn = function() {
+    console.log(1);
+  }
+  Father.prototype.someValue = '2'
+  function Son(fatherParams, ...sonParams) {
+    Father.call(this, ...fatherParams)
+    this.text='子类属性'
+    this.sonParams = sonParams;
+  }
+  var fatherParams = [];
+  var sonParams = [];
+  var sonInstance = new Son(fatherParams, ...sonParams);
+</script>
 </body>
 </html>
