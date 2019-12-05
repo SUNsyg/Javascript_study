@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BFC块格式化上下文</title>
+  <style>
+    .context {
+      width: 100%;
+      max-height: 1000px;
+      display: flex;
+    }
+    .box,.box1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+    }
+    .box {
+      margin-right: 10px;
+    }
+    .box1 {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="context">
+  <div class="box">
+
+  </div>
+  <div class="box1"></div>
+</div>
+</body>
+</html>

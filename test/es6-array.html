@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>array</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<script>
+  // 扩展运算符
+  // console.log(...[1,2,3])
+  const arr = document.querySelectorAll('div')
+  // console.log(...arr)
+
+  const number = [1,2,3,45]
+  function push(array, ...items) {
+    array.push(...items)
+  }
+
+  function add(x, y) {
+    return x + y;
+  }
+
+  const numbers = [4, 28]
+  add(...numbers)
+
+
+  // 替代apply
+  function f(x, y, z) {
+    console.log(x)
+  }
+
+  var args = [0, 1, 2]
+  // f.apply(null, args)
+  f(...args)
+
+  Math.max(14, 3, 77)
+  Math.max.apply(null, [14, 77, 13])
+  Math.max(...[14, 3, 77])
+
+  const arr1 = [1,2,3]
+  const arr2 = [4,5,6]
+  Array.prototype.push.apply(arr1, arr2)
+  console.log(arr2)
+  arr1.push(...arr2)
+
+  const a1 = arr2.concat()
+  a1[0] = 10
+  console.log(arr2)
+
+  const str = 'x\uD83D\uDE80y'
+  console.log(str.length)
+  console.log([...str].length)
+
+  function length(str) {
+    return [...str].length
+  }
+
+  // es6 Class
+  class Animal {
+    constructor(age) {
+      this.age = age
+    };
+    move() {};
+  }
+  class Mammal extends Animal {
+    constructor(age, furColor) {
+      super(age);
+      this.furColor = furColor;
+    }
+  }
+
+  const url = 'eq=name&age=12'
+  const searchParams = new URLSearchParams(url)
+
+  console.log(Object.fromEntries(searchParams));
+</script>
+</body>
+</html>

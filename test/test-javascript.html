@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+<body>
+<script>
+  function Person(first, last, age, gender, interests) {
+    this.name = {
+      'first': first,
+      'last': last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+    this.bio = function() {
+      let str = `${this.name.first} ${this.name.last} is ${this.age} years old.`
+      let pronoun
+      if (this.gender === 'male' || this.gender === 'Male' || this.gender === 'M' || this.gender === 'm') {
+        pronoun = 'He likes '
+      } else if (this.gender === 'Female' || this.gender === 'female' || this.gender === 'F' || this.gender === 'f') {
+        pronoun = 'She likes '
+      } else {
+        pronoun = 'They likes '
+      }
+      str += pronoun
+
+      if(this.interests.length === '1') {
+        str +=  `${this.interests[0]}.`
+      } else if (this.interests.length === 2) {
+        str += `${this.interests[0]} and ${this.interests[1]}.`;
+      } else {
+        for (let i=0; i<this.interests.length; i++) {
+          if (i === this.interests.length - 1) {
+            str += `and ${this.interests[i]}.`
+          } else {
+            str += `${this.interests[i]}, `
+          }
+        }
+      }
+      alert(str)
+    };
+    this.greeting = function() {
+      alert('Hi! I\'m ' + this.name.first + '.');
+    };
+  };
+  const person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+  person1['age']
+  person1.interests[1]
+  // person1.bio()
+  const person2 = new Person('Jack', 'Smith', 32, 'male', ['music', 'skiing']);
+
+  function read (name = 'Amy') {
+    const person = name
+    console.log(person)
+  }
+  read()
+
+  function look({name, page, count}) {
+    console.log('This is a %s. It"s funny.', name)
+    console.log('This is %s pages.', page)
+    console.log('This is my %s give it.', count)
+  }
+  look({
+    name: '白夜行',
+    count: '100',
+    page: '567'
+  })
+
+  Array.prototype.diff = function diff(comparisonArray) {
+    const hash = new Set(comparisonArray)
+    return this.filter(elem => !hash.has(elem));
+  };
+  const arr = [1,2,3,4,5,4]
+  const arr1 = [0,2,2,4,3,4]
+  arr.diff(arr1)
+</script>
+</body>
+</html>

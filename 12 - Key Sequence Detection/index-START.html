@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+  const pressed = []
+  const serecent = 'Enter'
+
+  window.addEventListener('keyup', (e) => {
+    const key = e.key
+    pressed.push(key)
+    pressed.splice(-serecent.length - 1, pressed.length - serecent.length)
+    if (pressed.join('').includes(serecent)) {
+      console.log('DING DING!')
+      cornify_add()
+    }
+    console.log(pressed)
+  })
+</script>
+</body>
+</html>
